@@ -9,5 +9,6 @@
 # include <dirent.h>
 # include <sys/wait.h>
 # include <signal.h>
+# include "libft.h"
 
 #endif

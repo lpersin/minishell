@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I./includes -I./libft
+CFLAGS = -Wall -Wextra -Werror -I./includes -I./libft -g
 LDFLAGS = -L./libft -lft
 
 SRCDIR = src
@@ -31,7 +31,6 @@ $(NAME): $(OBJECTS) $(LIBDIR)/$(LIB) $(DIRSTRUCT)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
-	mkdir -p obj
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBDIR)/$(LIB) :
