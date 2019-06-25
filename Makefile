@@ -27,10 +27,11 @@ LIB = libft.a
 
 all: $(NAME) 
 
-$(NAME): $(OBJECTS) $(LIBDIR)/$(LIB)
+$(NAME): $(OBJECTS) $(LIBDIR)/$(LIB) $(DIRSTRUCT)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+	mkdir -p obj
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBDIR)/$(LIB) :
