@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lpersin <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/06/21 18:33:14 by lpersin           #+#    #+#              #
-#    Updated: 2019/06/21 18:33:21 by lpersin          ###   ########.fr        #
+#    Created: 2019/07/01 15:43:28 by lpersin           #+#    #+#              #
+#    Updated: 2019/07/01 15:43:45 by lpersin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ LIB = libft.a
 
 all: $(NAME) 
 
-$(NAME): $(OBJECTS) $(LIBDIR)/$(LIB) $(DIRSTRUCT)
+$(NAME): $(OBJECTS) $(LIBDIR)/$(LIB)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
