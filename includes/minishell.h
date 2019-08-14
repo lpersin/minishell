@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:43:11 by lpersin           #+#    #+#             */
-/*   Updated: 2019/07/01 15:43:13 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/07/30 20:21:36 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,19 @@
 # include <dirent.h>
 # include <sys/wait.h>
 # include <signal.h>
+# include <limits.h>
 # include "libft.h"
+
+typedef struct  s_cmd
+{
+    char        *cmd;
+    char        **args;
+    int         var_num;
+}               t_cmd;
+
+void exec_builtin_cmd();
+void exec_cmd();
+void parse_command(char *cmd_line, t_cmd **cmd);
+int echo(char **args);
 
 #endif
