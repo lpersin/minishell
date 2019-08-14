@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:42:54 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/14 10:41:56 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/14 12:29:22 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,24 @@
 #include <stdio.h>
 
 static int is_builtin_cmd(t_cmd *cmd)
-{
-    int     i;
+{  
+    int     array_size;
     char    *builtins[] = {"echo", "cd", "setenv", "unsetenv", "env", "exit"};
 
-    i = 0;
-    while (i < 6)
+    if (cmd != NULL && cmd->cmd != NULL)
     {
-        if (ft_strcmp(cmd->cmd, builtins[i]) == 0)
-            return 1;
-        i++;
+        array_size = sizeof(builtins) / sizeof(builtins[0]);
+        while (array_size--)
+            if (ft_strcmp(cmd->cmd, builtins[array_size]) == 0)
+                return 1;
     }
     return 0;
+}
+
+static void init_vars(char **cmd_line, t_cmd **cmd)
+{
+    *cmd_line = NULL;
+    *cmd = NULL;
 }
 
 static void print_prompt()
@@ -43,6 +49,7 @@ int main()
         t_cmd   *cmd;
         int     status;
         
+        init_vars(&cmd_line, &cmd);
         print_prompt();
         get_next_line(STDIN_FILENO, &cmd_line);
         parse_command(cmd_line, &cmd);

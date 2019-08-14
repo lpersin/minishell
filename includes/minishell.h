@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:43:11 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/14 10:42:15 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/14 11:55:16 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ typedef struct  s_cmd
     int         var_num;
 }               t_cmd;
 
-void exec_builtin_cmd();
-void exec_cmd();
-void parse_command(char *cmd_line, t_cmd **cmd);
-int echo(char **args);
+void    exec_builtin_cmd();
+void    exec_cmd();
+void    parse_command(char *cmd_line, t_cmd **cmd);
+int     echo(char **args);
 
 #endif

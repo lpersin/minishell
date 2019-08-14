@@ -6,15 +6,15 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 20:18:37 by lpersin           #+#    #+#             */
-/*   Updated: 2019/07/30 20:20:22 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/14 11:39:46 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "minishell.h"
+#include "minishell.h"
 
 void exec_builtin_cmd()
 {
-	
+	ft_putstr("YUP");
 }
 
 void exec_cmd()
