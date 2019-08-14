@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:42:54 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/14 12:29:22 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/14 12:54:15 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int is_builtin_cmd(t_cmd *cmd)
     {
         array_size = sizeof(builtins) / sizeof(builtins[0]);
         while (array_size--)
-            if (ft_strcmp(cmd->cmd, builtins[array_size]) == 0)
+            if (!ft_strcmp(cmd->cmd, builtins[array_size]))
                 return 1;
     }
     return 0;
