@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 20:18:37 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/14 13:54:57 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/16 11:17:50 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static void	*fct_lookup(const char *fct_name)
 
 void 		exec_builtin_cmd(t_cmd *cmd)
 {
-	int (*builtin) (char**);
+	int (*builtin) (t_cmd*);
 	builtin = fct_lookup(cmd->cmd);
-	builtin(cmd->args);
+	builtin(cmd);
 }
 
 void 		exec_cmd()

@@ -6,14 +6,17 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 16:45:16 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/14 13:41:05 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/16 11:05:50 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int echo(char **args)
+int echo(t_cmd *cmd)
 {
+    char **args;
+
+    args = cmd->args;
     while (*args)
     {
         ft_putstr(*args);

@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 17:36:32 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/14 11:54:59 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/16 11:32:00 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ static void init_t_cmd(t_cmd **cmd)
 
 static void load_t_cmd(char **words, t_cmd **cmd)
 {   
+    char **tmp_words;
+
+    tmp_words = words;
     init_t_cmd(cmd);
     if(words[0] != NULL)
     {
@@ -35,6 +38,7 @@ static void load_t_cmd(char **words, t_cmd **cmd)
             words++;
         }
     }
+    free(tmp_words);
 }
 
 void parse_command(char *cmd_line, t_cmd **cmd)
@@ -44,5 +48,4 @@ void parse_command(char *cmd_line, t_cmd **cmd)
      if (cmd_line != NULL && *cmd_line != '\0')
         if ((words = ft_strsplit(cmd_line, ' ')) != NULL)
             load_t_cmd(words, cmd);
-        
 }

@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:42:54 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/14 12:54:15 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/16 11:44:18 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int main()
             else
                 waitpid(child_pid, &status, 0);
         }
+        free(cmd_line);
+        free_t_cmd(cmd);
     }
     return (EXIT_SUCCESS);
 }
