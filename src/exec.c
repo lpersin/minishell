@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 20:18:37 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/16 11:17:50 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/20 17:28:34 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	*fct_lookup(const char *fct_name)
 {
 	int i;
 	int num_tables_entries;
-	t_fct_table_entry	fct_table[] = {{"echo", echo}, {"exit", ft_exit}};
+	t_fct_table_entry	fct_table[] = {{"echo", ft_echo}, {"exit", ft_exit}, {"cd", ft_cd}};
 
 	i = 0;
 	num_tables_entries = sizeof(fct_table) / sizeof(t_fct_table_entry);

@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:43:11 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/16 11:13:19 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/20 17:29:49 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct  s_cmd
 {
     char        *cmd;
     char        **args;
+    char        **env_p;
     int         var_num;
 }               t_cmd;
 
@@ -41,7 +42,8 @@ void    exec_builtin_cmd();
 void    exec_cmd();
 void    parse_command(char *cmd_line, t_cmd **cmd);
 void    free_t_cmd(t_cmd *cmd);
-int     echo(t_cmd *cmd);
+int     ft_echo(t_cmd *cmd);
 int     ft_exit(t_cmd *cmd);
+int     ft_cd(t_cmd *cmd);
 
 #endif

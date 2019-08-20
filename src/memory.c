@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/16 11:08:17 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/16 11:24:35 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/20 17:30:23 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void free_t_cmd(t_cmd *cmd)
             *args = NULL;
             args++;
         }
-        ft_memdel((void**)args);
-        ft_memdel((void**)&(cmd->cmd));
-        ft_memdel((void**)&cmd);
+        free(cmd->args);
+        free(cmd->cmd);
+        free(cmd);
     }
 }

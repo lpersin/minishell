@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 16:45:16 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/20 17:28:47 by lpersin          ###   ########.fr       */
+/*   Created: 2019/08/20 16:06:19 by lpersin           #+#    #+#             */
+/*   Updated: 2019/08/20 17:28:40 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int ft_echo(t_cmd *cmd)
+int	ft_cd(t_cmd *cmd)
 {
-    char **args;
-
-    args = cmd->args;
-    while (*args)
-    {
-        ft_putstr(*args);
-        args++;
-        if (*args)
-            ft_putchar(' ');
-    }
-    ft_putchar('\n');
-    return (EXIT_SUCCESS);
+	if(cmd)
+		;
+	return(EXIT_SUCCESS);
 }

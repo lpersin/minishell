@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 17:36:32 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/16 11:32:00 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/20 17:23:32 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,26 @@ static void init_t_cmd(t_cmd **cmd)
 
 static void load_t_cmd(char **words, t_cmd **cmd)
 {   
-    char **tmp_words;
+    char    **tmp_words;
+    int     i;
 
     tmp_words = words;
+    i = 1;
     init_t_cmd(cmd);
-    if(words[0] != NULL)
+    if (words[0] != NULL)
     {
         (*cmd)->cmd = words[0];
-        words++;
-        (*cmd)->args = words;
-        while (*words != NULL)
+        while (words[i] != NULL)
         {
             (*cmd)->var_num++;
-            words++;
+            i++;
+        }
+        (*cmd)->args = (char**)malloc(sizeof(char*) * (*cmd)->var_num + 1);
+        i = 0;
+        while (words[i] != NULL)
+        {
+            (*cmd)->args[i] = words[i + 1];
+            i++;
         }
     }
     free(tmp_words);

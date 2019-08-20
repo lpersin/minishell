@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:42:54 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/16 11:44:18 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/20 17:26:58 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,15 @@ static void print_prompt()
 int main()
 {
     //extern char **environ;
+    pid_t   child_pid;
+    char    *cmd_line;
+    t_cmd   *cmd;
+    int     status;
+    //char    **env_p;
+
+    //copy_environ(env_p, environ);
     while(1)
     {
-        pid_t   child_pid;
-        char    *cmd_line;
-        t_cmd   *cmd;
-        int     status;
-        
         init_vars(&cmd_line, &cmd);
         print_prompt();
         get_next_line(STDIN_FILENO, &cmd_line);
