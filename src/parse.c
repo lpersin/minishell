@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 17:36:32 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 16:18:45 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/21 16:26:29 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void load_t_cmd(char **words, t_cmd **cmd)
     {
         (*cmd)->cmd = words[0];
         (*cmd)->var_num = ft_str_array_size(&(words[1]));
-        (*cmd)->args = ft_copy_str_array(&(words[1]));
+        (*cmd)->args = ft_str_array_copy(&(words[1]));
     }
 }
 

@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:42:54 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 15:16:01 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/21 16:35:05 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int main()
     pid_t   child_pid;
     t_cmd   *cmd;
     int     status;
-    //char    **env_p;
+    char    **env_p;
 
-    //env_p = copy_environ();
+    env_p = copy_environ();
     while(1)
     {
         print_prompt();

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_copy_str_array.c                                :+:      :+:    :+:   */
+/*   ft_str_array_copy.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 10:36:03 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 15:56:14 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/21 16:24:45 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** WARNING: DOESN'T COPY CHAR ARRAYS 
 */
 
-char	**ft_copy_str_array(char **src)
+char	**ft_str_array_copy(char **src)
 {
 	char	**dst;
 	int		arr_size;

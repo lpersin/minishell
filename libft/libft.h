@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 15:31:06 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 12:32:56 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/21 16:25:12 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,22 +92,17 @@ char				*ft_strnjoin(const char *s1, const char *s2, size_t n);
 int					ft_abs(int x);
 unsigned int		ft_countwords(char const *s, char const c);
 int					ft_count_digits(size_t nb);
-void				mem_error();
-void				io_error();
 void				ft_node_to_str(t_list *node);
 int					get_next_line(const int fd, char **line);
 char				*ft_strfill(char *str, char c, size_t nb);
 void				ft_alpha_sortlst(t_list **head_ref);
 void				ft_fct_sortlst(t_list **head_ref,
 						int (*f)(t_list*, t_list*));
-t_list				*ft_nodedel(t_list *curr_node, int (*target)(t_list*),
-						void (*del)(void*, size_t));
 t_list				*ft_lst_del_occurences(t_list *head, int (*target)(t_list*),
 						void (*del)(void*, size_t));
 void				ft_write_nbr_r2l(int n, char *buf);
-size_t				get_total_blks_allocated(t_list *node);
 int					ft_str_array_size(char **arr);
-char				**ft_copy_str_array(char **src);
-char				**ft_deepcopy_str_array(char **arr);
+char				**ft_str_array_copy(char **src);
+char				**ft_str_array_deepcopy(char **arr);
 
 #	endif
