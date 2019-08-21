@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 15:53:05 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 16:41:28 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/21 19:59:09 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**copy_environ()
 	return (env_p);
 }
 
-void print_env(char **env_p)
+void	print_env(char **env_p)
 {
 	while (*env_p)
 	{
@@ -29,4 +29,18 @@ void print_env(char **env_p)
 		ft_putchar('\n');
 		env_p++;
 	}
+}
+
+char	*env_lookup(char *var_name, char **env_p)
+{
+	char *offset;
+
+	while(*env_p)
+	{
+		if ((offset = ft_strrchr(*env_p, '=')) != NULL)
+			if(!ft_strncmp(var_name, *env_p, (offset - *env_p)))
+				return (offset + 1);
+	env_p++;
+	}
+	return (NULL);
 }

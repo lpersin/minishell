@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 10:36:03 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 16:24:45 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/21 19:41:45 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	**ft_str_array_copy(char **src)
 	int		arr_size;
 
 	arr_size = ft_str_array_size(src);
-	dst = (char**)malloc(sizeof(char*) * (arr_size + 1));
-	ft_memcpy(dst, src, sizeof(char*) * (arr_size + 1));
+	if ((dst = (char**)malloc(sizeof(char*) * (arr_size + 1))) != NULL)
+		ft_memcpy(dst, src, sizeof(char*) * (arr_size + 1));
 	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:43:11 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 16:44:17 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/21 19:46:11 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ int     ft_exit(t_cmd *cmd);
 int     ft_cd(t_cmd *cmd);
 char	**copy_environ();
 void    print_env(char **env);
+char	*env_lookup(char *var_name, char **env_p);
 
 #endif
