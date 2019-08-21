@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 17:36:32 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 11:20:39 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/21 16:18:45 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void init_t_cmd(t_cmd **cmd)
 }
 
 static void load_t_cmd(char **words, t_cmd **cmd)
-{   
+{
     init_t_cmd(cmd);
     if (words[0] != NULL)
     {

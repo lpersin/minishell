@@ -6,7 +6,7 @@
 #    By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/01 15:43:28 by lpersin           #+#    #+#              #
-#    Updated: 2019/07/01 15:43:45 by lpersin          ###   ########.fr        #
+#    Updated: 2019/08/21 16:20:22 by lpersin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,19 +24,18 @@ OBJECTS := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 NAME = minishell
 
 LIB = libft.a
+.PHONY:  all clean fclean re $(LIBDIR)
 
-all: $(NAME) 
+all: $(LIBDIR) $(NAME) 
 
-$(NAME): $(OBJECTS) $(LIBDIR)/$(LIB)
+$(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(LIBDIR)/$(LIB) :
+$(LIBDIR) :
 	$(MAKE) -C $(LIBDIR)
-
-.PHONY: clean fclean re
 
 clean:
 	$(MAKE) clean -C  $(LIBDIR)
