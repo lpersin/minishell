@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lpersin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 15:31:06 by lpersin           #+#    #+#             */
-/*   Updated: 2019/06/21 16:06:57 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/21 12:32:56 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,8 @@ t_list				*ft_lst_del_occurences(t_list *head, int (*target)(t_list*),
 						void (*del)(void*, size_t));
 void				ft_write_nbr_r2l(int n, char *buf);
 size_t				get_total_blks_allocated(t_list *node);
+int					ft_str_array_size(char **arr);
+char				**ft_copy_str_array(char **src);
+char				**ft_deepcopy_str_array(char **arr);
 
 #	endif

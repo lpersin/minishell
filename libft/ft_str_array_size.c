@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   ft_str_array_size.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/30 16:45:16 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/20 17:28:47 by lpersin          ###   ########.fr       */
+/*   Created: 2019/08/21 10:23:18 by lpersin           #+#    #+#             */
+/*   Updated: 2019/08/21 10:29:09 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int ft_echo(t_cmd *cmd)
+int	ft_str_array_size(char **arr)
 {
-    char **args;
+	int i;
 
-    args = cmd->args;
-    while (*args)
-    {
-        ft_putstr(*args);
-        args++;
-        if (*args)
-            ft_putchar(' ');
-    }
-    ft_putchar('\n');
-    return (EXIT_SUCCESS);
+	i = 0;
+	while (*arr)
+	{
+		i++;
+		arr++;
+	}
+	return (i);
 }

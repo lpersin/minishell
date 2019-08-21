@@ -6,14 +6,14 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:42:54 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/20 17:26:58 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/21 15:16:01 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <stdio.h>
 
-static int is_builtin_cmd(t_cmd *cmd)
+static int      is_builtin_cmd(t_cmd *cmd)
 {  
     int     array_size;
     char    *builtins[] = {"echo", "cd", "setenv", "unsetenv", "env", "exit"};
@@ -28,33 +28,36 @@ static int is_builtin_cmd(t_cmd *cmd)
     return 0;
 }
 
-static void init_vars(char **cmd_line, t_cmd **cmd)
-{
-    *cmd_line = NULL;
-    *cmd = NULL;
-}
-
-static void print_prompt()
+static void     print_prompt()
 {
     ft_putstr("$> ");
 }
-    
+
+static t_cmd    *get_t_cmd()
+{
+    char    *cmd_line;
+    t_cmd   *cmd;
+
+    cmd_line = NULL;
+    cmd = NULL;
+    get_next_line(STDIN_FILENO, &cmd_line);
+    parse_command(cmd_line, &cmd);
+    ft_memdel((void**)&cmd_line);
+    return cmd;
+}
+
 int main()
 {
-    //extern char **environ;
     pid_t   child_pid;
-    char    *cmd_line;
     t_cmd   *cmd;
     int     status;
     //char    **env_p;
 
-    //copy_environ(env_p, environ);
+    //env_p = copy_environ();
     while(1)
     {
-        init_vars(&cmd_line, &cmd);
         print_prompt();
-        get_next_line(STDIN_FILENO, &cmd_line);
-        parse_command(cmd_line, &cmd);
+        cmd = get_t_cmd();
         if (is_builtin_cmd(cmd))
             exec_builtin_cmd(cmd);
         else
@@ -65,7 +68,6 @@ int main()
             else
                 waitpid(child_pid, &status, 0);
         }
-        free(cmd_line);
         free_t_cmd(cmd);
     }
     return (EXIT_SUCCESS);

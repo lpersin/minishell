@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/22 13:55:51 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/16 11:42:03 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/21 15:47:43 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char					**ft_strsplit(char const *s, char c)
 		return (NULL);
 	start = 0;
 	idx = 0;
-	word_tab = (char**)malloc((sizeof(char*) * ft_countwords(s, c)) + 1);
+	word_tab = (char**)malloc(sizeof(char*) * (ft_countwords(s, c) + 1));
 	if (word_tab)
 	{
 		pass_char(s, c, &start);
