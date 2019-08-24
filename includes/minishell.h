@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:43:11 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 19:46:11 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/21 21:53:08 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct  s_cmd
 {
     char        *cmd;
     char        **args;
-    char        **env_p;
+    char        ***env_p;
     int         var_num;
 }               t_cmd;
 

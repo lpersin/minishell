@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:42:54 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 19:58:54 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/21 21:54:05 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int main()
     {
         print_prompt();
         cmd = get_t_cmd();
+        cmd->env_p = &env_p;
         if (is_builtin_cmd(cmd))
             exec_builtin_cmd(cmd);
         else
