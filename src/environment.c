@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 15:53:05 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/24 15:05:52 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/24 19:47:11 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,45 @@ static void	print_env(char **env_p)
 	}
 }
 
-char	*env_lookup(char *var, char **env_p)
+char	**get_env_var_ptr(char *var, char **env_p)
 {
-	char *offset;
+	size_t	var_len;
 
+	var_len = ft_strlen(var);
 	while (*env_p)
 	{
-		if ((offset = ft_strrchr(*env_p, '=')) != NULL)
-			if (!ft_strncmp(var, *env_p, (offset - *env_p)))
-				return (offset + 1);
+		if (!ft_strncmp(var, *env_p, var_len) && (*env_p)[var_len] == '=')
+			return (env_p);
 	env_p++;
 	}
 	return (NULL);
 }
 
+static char	*get_env_entry(char	*var, char *value)
+{
+	char	*entry;
+
+	entry = ft_strnew(ft_strlen(var) + ft_strlen(value) + 1);
+	ft_strcat(entry, var);
+	ft_strcat(entry, "=");
+	ft_strcat(entry, value);
+	return (entry);
+}
+
 static void	add_var_env(char *var, char *value, char ***env_p)
 {
-	char	*target;
+	char	**target;
+	char	*new_entry;
 
-	target = env_lookup(var, *env_p);
-	if (target)
+	new_entry = get_env_entry(var, value);
+	target = get_env_var_ptr(var, *env_p);
+	if (target != NULL)
 	{
-		ft_putstr(target);
+		ft_memdel((void**)target);
+		*target = new_entry;
 	}
 	else
-	{
-		*env_p = ft_str_array_add(*env_p, value);
-	}
+		*env_p = ft_str_array_add(*env_p, new_entry);
 }
 
 int		ft_setenv(t_cmd *cmd)
