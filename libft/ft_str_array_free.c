@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*   ft_str_array_free.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/20 16:06:19 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/24 11:58:52 by lpersin          ###   ########.fr       */
+/*   Created: 2019/08/24 14:54:53 by lpersin           #+#    #+#             */
+/*   Updated: 2019/08/24 15:08:32 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	ft_cd(t_cmd *cmd)
+void    ft_str_array_free(char **arr)
 {
-	if(cmd)
-	{
-		;
-	}
-	return(EXIT_SUCCESS);
+    char    **tmp;
+
+    tmp = arr;
+    while (*tmp)
+    {
+        ft_memdel((void**)tmp);
+        tmp++;
+    }
+    ft_memdel((void**)&arr);
 }

@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:42:54 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 21:54:05 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/24 14:05:51 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,11 @@ static t_cmd    *get_t_cmd()
 
 int main()
 {
-    pid_t   child_pid;
     t_cmd   *cmd;
-    int     status;
     char    **env_p;
 
     env_p = copy_environ();
-    while(1)
+    while (1)
     {
         print_prompt();
         cmd = get_t_cmd();
@@ -62,13 +60,7 @@ int main()
         if (is_builtin_cmd(cmd))
             exec_builtin_cmd(cmd);
         else
-        {
-            child_pid = fork();
-            if (child_pid == 0)
-                exec_cmd(cmd); //calls execvp
-            else
-                waitpid(child_pid, &status, 0);
-        }
+            exec_external_cmd(cmd);
         free_t_cmd(cmd);
     }
     return (EXIT_SUCCESS);

@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_array_deepcopy.c                            :+:      :+:    :+:   */
+/*   ft_str_array_add.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/21 12:29:06 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/24 14:46:36 by lpersin          ###   ########.fr       */
+/*   Created: 2019/08/24 11:08:01 by lpersin           #+#    #+#             */
+/*   Updated: 2019/08/24 14:34:39 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_str_array_deepcopy(char **arr)
+char    **ft_str_array_add(char **arr, char *str)
 {
-	char	**dst;
-	int		i;
+    char    **new_arr;
+    int     arr_size;
 
-	i = 0;
-	dst = ft_str_array_copy(arr);
-	while (arr[i])
-	{
-		dst[i] = ft_strdup(arr[i]);
-		i++;
-	}
-	return dst;
+    arr_size = ft_str_array_size(arr);
+    if (((new_arr = (char**)malloc(sizeof(char*) * (arr_size + 2))) != NULL))
+    {
+        ft_memcpy(new_arr, arr, sizeof(char*) * (arr_size + 1));
+        new_arr[arr_size] = ft_strdup(str);
+        new_arr[arr_size + 1] = NULL;
+        ft_memdel((void**)&arr);
+    }
+    return new_arr;
 }

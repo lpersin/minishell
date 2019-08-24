@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 17:36:32 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 17:12:34 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/24 15:02:29 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void init_t_cmd(t_cmd **cmd)
         exit(EXIT_FAILURE);  //should free memory then exit here
     (*cmd)->cmd = NULL;
     (*cmd)->args = NULL;
+    (*cmd)->env_p = NULL;
     (*cmd)->var_num = 0;
 }
 

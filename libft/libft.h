@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 15:31:06 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 16:25:12 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/24 14:57:27 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,7 @@ void				ft_write_nbr_r2l(int n, char *buf);
 int					ft_str_array_size(char **arr);
 char				**ft_str_array_copy(char **src);
 char				**ft_str_array_deepcopy(char **arr);
+char    			**ft_str_array_add(char **arr, char *str);
+void    			ft_str_array_free(char **arr);
 
 #	endif

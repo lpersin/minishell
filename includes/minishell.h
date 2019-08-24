@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:43:11 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 21:53:08 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/24 15:05:35 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,16 @@ typedef struct  s_fct_table_entry
     int        (*fct)(t_cmd*);
 }               t_fct_table_entry;
 
-void    exec_builtin_cmd();
-void    exec_cmd();
+void    exec_builtin_cmd(t_cmd *cmd);
+void	exec_external_cmd(t_cmd *cmd);
 void    parse_command(char *cmd_line, t_cmd **cmd);
 void    free_t_cmd(t_cmd *cmd);
 int     ft_echo(t_cmd *cmd);
 int     ft_exit(t_cmd *cmd);
 int     ft_cd(t_cmd *cmd);
+int		ft_setenv(t_cmd *cmd);
 char	**copy_environ();
-void    print_env(char **env);
 char	*env_lookup(char *var_name, char **env_p);
+
 
 #endif

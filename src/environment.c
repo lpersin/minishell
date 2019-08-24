@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 15:53:05 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 22:03:32 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/24 15:05:52 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**copy_environ()
 	return (env_p);
 }
 
-void	print_env(char **env_p)
+static void	print_env(char **env_p)
 {
 	while (*env_p)
 	{
@@ -35,7 +35,7 @@ char	*env_lookup(char *var, char **env_p)
 {
 	char *offset;
 
-	while(*env_p)
+	while (*env_p)
 	{
 		if ((offset = ft_strrchr(*env_p, '=')) != NULL)
 			if (!ft_strncmp(var, *env_p, (offset - *env_p)))
@@ -47,13 +47,23 @@ char	*env_lookup(char *var, char **env_p)
 
 static void	add_var_env(char *var, char *value, char ***env_p)
 {
+	char	*target;
 
+	target = env_lookup(var, *env_p);
+	if (target)
+	{
+		ft_putstr(target);
+	}
+	else
+	{
+		*env_p = ft_str_array_add(*env_p, value);
+	}
 }
 
-int		*setenv(t_cmd *cmd)
+int		ft_setenv(t_cmd *cmd)
 {
 	if (cmd->args[0] == NULL)
-		print_env(cmd->env_p);
+		print_env(*(cmd->env_p));
 	else if (cmd->args[1] == NULL)
 		add_var_env(cmd->args[0], "", cmd->env_p);
 	else if (cmd->args[2] == NULL)
@@ -65,3 +75,12 @@ int		*setenv(t_cmd *cmd)
 	}
 	return (EXIT_SUCCESS);
 }
+
+/*
+NOTE FOR ENV !!!
+SUBSTITUTION IS DONE BEFORE EXECUTING COMMANDS
+AND COMMANDS ARE EXECUTED IN A FORKED PROCESS
+AND ONLY EXTERNAL COMMANDS CAN BE EXECUTED NOT BUILTINS
+THATS WHY env -i /bin/echo $HOME WORKS and env -i /usr/bin/cd $HOME
+DOESN't MOVE YOU
+*/
