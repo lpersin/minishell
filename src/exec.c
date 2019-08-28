@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 20:18:37 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/24 14:04:59 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/27 19:18:55 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static void	*fct_lookup(const char *fct_name)
 	int i;
 	int num_tables_entries;
 	t_fct_table_entry	fct_table[] = {{"echo", ft_echo}, {"exit", ft_exit},
-										 {"cd", ft_cd}, {"setenv", ft_setenv}};
+										{"cd", ft_cd}, {"setenv", ft_setenv},
+										{"unsetenv", ft_unsetenv}};
 
 	i = 0;
 	num_tables_entries = sizeof(fct_table) / sizeof(t_fct_table_entry);
@@ -44,14 +45,14 @@ static void	exec_cmd()
 	
 }
 
-void		exec_external_cmd(t_cmd *cmd)
+void		exec_external_cmd()
 {
 	pid_t child_pid;
 	int status;
 
 	child_pid = fork();
 	if (child_pid == 0)
-		exec_cmd(cmd); //calls execvp
+		exec_cmd(); //calls execvp
 	else
 		waitpid(child_pid, &status, 0);
 }

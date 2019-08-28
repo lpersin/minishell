@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/24 11:08:01 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/24 18:19:51 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/27 19:05:26 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ char    **ft_str_array_add(char **arr, char *str)
         new_arr[arr_size + 1] = NULL;
         ft_memdel((void**)&arr);
     }
-    return new_arr;
+    return (new_arr);
 }

@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 15:31:06 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/24 14:57:27 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/27 19:15:54 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
+int					ft_strisalnum(char *str);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 char				*ft_itoa(int n);
@@ -105,6 +106,8 @@ int					ft_str_array_size(char **arr);
 char				**ft_str_array_copy(char **src);
 char				**ft_str_array_deepcopy(char **arr);
 char    			**ft_str_array_add(char **arr, char *str);
+char				**ft_str_array_del(char **arr, char *target);
 void    			ft_str_array_free(char **arr);
+int					ft_str_array_contains(char **arr, char *str);
 
 #	endif

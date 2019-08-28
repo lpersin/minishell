@@ -6,7 +6,7 @@
 #    By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/01 15:43:28 by lpersin           #+#    #+#              #
-#    Updated: 2019/08/21 16:20:22 by lpersin          ###   ########.fr        #
+#    Updated: 2019/08/28 16:00:44 by lpersin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIB = libft.a
 
 all: $(LIBDIR) $(NAME) 
 
-$(NAME): $(OBJECTS)
+$(NAME): $(OBJECTS) $(LIBDIR)/$(LIB)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LDFLAGS)
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
