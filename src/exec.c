@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 20:18:37 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/27 19:18:55 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/29 15:50:47 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,14 @@ static void	exec_cmd()
 	
 }
 
-void		exec_external_cmd()
+void		exec_external_cmd(t_cmd *cmd)
 {
 	pid_t child_pid;
 	int status;
 
+	if(cmd)
+	{;}
+		
 	child_pid = fork();
 	if (child_pid == 0)
 		exec_cmd(); //calls execvp
