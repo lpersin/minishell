@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:42:54 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/27 19:16:13 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/08/28 17:49:10 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static int      is_builtin_cmd(t_cmd *cmd)
         array_size = sizeof(builtins) / sizeof(builtins[0]);
         while (array_size--)
             if (!ft_strcmp(cmd->cmd, builtins[array_size]))
-                return 1;
+                return (1);
     }
-    return 0;
+    return (0);
 }
 
 static void     print_prompt()
@@ -33,7 +33,7 @@ static void     print_prompt()
     ft_putstr("$> ");
 }
 
-static t_cmd    *get_t_cmd()
+static t_cmd    *get_t_cmd(char ***env_p)
 {
     char    *cmd_line;
     t_cmd   *cmd;
@@ -42,6 +42,8 @@ static t_cmd    *get_t_cmd()
     cmd = NULL;
     get_next_line(STDIN_FILENO, &cmd_line);
     parse_command(cmd_line, &cmd);
+    if (cmd != NULL)
+        cmd->env_p = env_p;
     ft_memdel((void**)&cmd_line);
     return cmd;
 }
@@ -55,8 +57,7 @@ int main()
     while (1)
     {
         print_prompt();
-        cmd = get_t_cmd();
-        cmd->env_p = &env_p;
+        cmd = get_t_cmd(&env_p);
         if (is_builtin_cmd(cmd))
             exec_builtin_cmd(cmd);
         else
