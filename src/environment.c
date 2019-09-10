@@ -46,6 +46,11 @@ char	**get_env_var_ptr(char *var, char **env_p)
 	return (NULL);
 }
 
+char	*get_env_var_val(char *var, char **env_p)
+{
+	
+}
+
 /*
 NOTE FOR ENV !!!
 SUBSTITUTION IS DONE BEFORE EXECUTING COMMANDS

@@ -12,3 +12,24 @@
 
 #include "minishell.h"
 
+static void swap_argument(char *args)
+{
+
+}
+
+int expand_variables(t_cmd *cmd)
+{
+    char    **args;
+    char    *tmp;
+
+    args = cmd->args;
+    while (*args)
+    {
+        if (*args[0] == '$' && *args[1] != '\0')
+        {
+            tmp = *args;
+            *args = 
+        }
+    }
+}
+
