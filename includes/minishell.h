@@ -45,6 +45,7 @@ void    free_t_cmd(t_cmd *cmd);
 int     ft_echo(t_cmd *cmd);
 int     ft_exit(t_cmd *cmd);
 int     ft_cd(t_cmd *cmd);
+int	    ft_env(t_cmd *cmd);
 int		ft_setenv(t_cmd *cmd);
 int		ft_unsetenv(t_cmd *cmd);
 char	**copy_environ();

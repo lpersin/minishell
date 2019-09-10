@@ -12,7 +12,8 @@
 
 #include "minishell.h"
 
-int	ft_env()
+int	ft_env(t_cmd *cmd)
 {
-	return(EXIT_SUCCESS);
+	print_env(*(cmd->env_p));
+	return (EXIT_SUCCESS);
 }

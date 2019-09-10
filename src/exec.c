@@ -17,7 +17,8 @@ static void	*fct_lookup(const char *fct_name)
 	int i;
 	int num_tables_entries;
 	t_fct_table_entry	fct_table[] = {{"echo", ft_echo}, {"exit", ft_exit},
-										{"cd", ft_cd}, {"setenv", ft_setenv},
+										{"cd", ft_cd}, {"env", ft_env},
+										{"setenv", ft_setenv},
 										{"unsetenv", ft_unsetenv}};
 
 	i = 0;
