@@ -58,11 +58,14 @@ int main()
     {
         print_prompt();
         cmd = get_t_cmd(&env_p);
-        if (is_builtin_cmd(cmd))
-            exec_builtin_cmd(cmd);
-        else
-            exec_external_cmd(cmd);
-        free_t_cmd(cmd);
+        if (expand_variables(cmd) != EXIT_FAILURE)
+        {
+            if (is_builtin_cmd(cmd))
+                exec_builtin_cmd(cmd);
+            else
+                exec_external_cmd(cmd);
+            free_t_cmd(cmd);
+        }
     }
     return (EXIT_SUCCESS);
 }

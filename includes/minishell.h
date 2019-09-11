@@ -41,6 +41,7 @@ typedef struct  s_fct_table_entry
 void    exec_builtin_cmd(t_cmd *cmd);
 void	exec_external_cmd(t_cmd *cmd);
 void    parse_command(char *cmd_line, t_cmd **cmd);
+int     expand_variables(t_cmd *cmd);
 void    free_t_cmd(t_cmd *cmd);
 int     ft_echo(t_cmd *cmd);
 int     ft_exit(t_cmd *cmd);
@@ -50,6 +51,7 @@ int		ft_setenv(t_cmd *cmd);
 int		ft_unsetenv(t_cmd *cmd);
 char	**copy_environ();
 char	**get_env_var_ptr(char *var, char **env_p);
+char	*get_env_var_val(char *var, char **env_p);
 void	print_env(char **env_p);
 
 

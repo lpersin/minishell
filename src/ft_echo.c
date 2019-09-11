@@ -15,14 +15,20 @@
 int ft_echo(t_cmd *cmd)
 {
     char **args;
+    int i;
 
     args = cmd->args;
-    while (*args)
+    i = 0;
+    while (i++ < cmd->var_num)
     {
-        ft_putstr(*args);
-        args++;
+
         if (*args)
-            ft_putchar(' ');
+        {
+            ft_putstr(*args);
+            if (i < cmd->var_num)
+                ft_putchar(' ');
+        }
+        args++;
     }
     ft_putchar('\n');
     return (EXIT_SUCCESS);

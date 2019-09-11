@@ -14,9 +14,19 @@
 
 void        free_t_cmd(t_cmd *cmd)
 {
+    int     i;
+    char    **args;
+
     if (cmd)
     {
-        ft_str_array_free(cmd->args);
+        i = 0;
+        args = cmd->args;
+        while (i++ < cmd->var_num)
+        {
+            ft_memdel((void**)args);
+            args++;
+        }
+        ft_memdel((void**)&cmd->args);
         ft_memdel((void**)&cmd->cmd);
         ft_memdel((void**)&cmd);
     }

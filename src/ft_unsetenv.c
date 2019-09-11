@@ -23,18 +23,21 @@ static void del_var_env(char *var, char ***env_p)
 int		ft_unsetenv(t_cmd *cmd)
 {
 	char	**args;
+	int		i;
 
 	args = cmd->args;
-	if (cmd->args[0] == NULL)
+	i = 0;
+	if (cmd->var_num == 0)
 	{
 		ft_putstr("unsetenv: Too few arguments.\n");
 		return (EXIT_FAILURE);
 	}
 	else
 	{
-		while (*args)
+		while (i++ < cmd->var_num)
 		{
-			del_var_env(*args, cmd->env_p);
+			if(*args)
+				del_var_env(*args, cmd->env_p);
 			args++;
 		}
 		return (EXIT_SUCCESS);
