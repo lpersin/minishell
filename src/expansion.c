@@ -6,54 +6,61 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 18:55:01 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/28 19:04:14 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/09/11 19:42:57 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+static void	expand_dollar(char **args, char **env_p)
+{
+    char *tmp;
 
-// static int expand_tilde(char *arg, char **env_p)
-// {
+	tmp = *args;
+	*args = get_env_var_val(*args + 1, env_p);
+    ft_memdel((void**)&tmp);
+}
 
-// }
+static int	expand_tilde(char **args, char **env_p)
+{
+	char *tmp;
+	char *val;
 
-// static void expand_dollar(char *arg, char **env_p)
-// {
-    
-// }
+	tmp = *args;
+	val = get_env_var_val("HOME", env_p);
+	if (val == NULL)
+	{
+		ft_putstr("No $HOME variable set.\n");
+		return (EXIT_FAILURE);
+	}
+	if ((*args)[1] == '\0')
+	{
+		*args = val;
+		ft_memdel((void**)&tmp);
+	}
+	if ((*args)[1] == '/')
+	{
+		*args = ft_strjoin(val, *args + 1);
+		ft_memdel((void**)&val);
+        ft_memdel((void**)&tmp);
+	}
+	return (EXIT_SUCCESS);
+}
 
-int expand_variables(t_cmd *cmd)
+int 		expand_variables(t_cmd *cmd)
 {
     char    **args;
-    char    *tmp;
 
     if (cmd != NULL)
     {
         args = cmd->args;
         while (*args)
         {
-            tmp = *args;
             if ((*args)[0] == '$' && (*args)[1] != '\0')
-            {
-                *args = get_env_var_val(*args + 1, *(cmd->env_p));
-                free(tmp);
-            }
-            else if ((*args)[0] == '~' && (*args)[1] == '\0')
-            {
-                *args = get_env_var_val("HOME", *(cmd->env_p));
-                if (*args == NULL)
-                {
-                    ft_putstr("No $home variable set.\n");
-                    return (EXIT_FAILURE);
-                }
-                free(tmp);
-            }
-            else if ((*args)[0] == '~' && (*args)[1] == '/')
-            {
-                *args = ft_strjoin(get_env_var_val("HOME", *(cmd->env_p)), *args + 1);
-                free(tmp);
-            }
+				expand_dollar(args, *(cmd->env_p));
+			if ((*args)[0] == '~')
+				if (expand_tilde(args, *(cmd->env_p)) == EXIT_FAILURE)
+					return (EXIT_FAILURE); 
             args++;
         }
     }

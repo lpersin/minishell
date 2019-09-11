@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 15:53:05 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/28 17:44:11 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/09/11 19:39:07 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,16 @@ char	**copy_environ()
 {
 	extern char	**environ;
 	char		**env_p;
+	char		*cwd;
 
 	env_p = ft_str_array_deepcopy(environ);
+	if (get_env_var_ptr("PWD", env_p) == NULL)
+	{
+		cwd = (char*)malloc(sizeof(char) * MAXPATHLEN);
+		cwd = getcwd(cwd, MAXPATHLEN);
+		add_var_env("PWD", cwd, &env_p);
+		ft_memdel((void**)&cwd);
+	}
 	return (env_p);
 }
 

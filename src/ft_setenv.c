@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 17:35:30 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/28 17:44:07 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/09/11 19:43:19 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*build_env_entry(char	*var, char *value)
 	return (entry);
 }
 
-static void	add_var_env(char *var, char *value, char ***env_p)
+void		add_var_env(char *var, char *value, char ***env_p)
 {
 	char	**target;
 	char	*new_entry;
@@ -39,7 +39,7 @@ static void	add_var_env(char *var, char *value, char ***env_p)
 		*env_p = ft_str_array_add(*env_p, new_entry);
 }
 
-int		ft_setenv(t_cmd *cmd)
+int			ft_setenv(t_cmd *cmd)
 {	
 	if (cmd->args[0] == NULL)
 		print_env(*(cmd->env_p));

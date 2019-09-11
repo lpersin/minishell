@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:43:11 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/28 17:44:58 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/09/11 19:39:40 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <sys/param.h>
 # include <fcntl.h>
 # include <dirent.h>
 # include <sys/wait.h>
@@ -50,6 +51,7 @@ int	    ft_env(t_cmd *cmd);
 int		ft_setenv(t_cmd *cmd);
 int		ft_unsetenv(t_cmd *cmd);
 char	**copy_environ();
+void	add_var_env(char *var, char *value, char ***env_p);
 char	**get_env_var_ptr(char *var, char **env_p);
 char	*get_env_var_val(char *var, char **env_p);
 void	print_env(char **env_p);

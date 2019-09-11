@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 16:45:16 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/21 12:17:45 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/09/11 19:43:51 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int ft_echo(t_cmd *cmd)
     i = 0;
     while (i++ < cmd->var_num)
     {
-
         if (*args)
         {
             ft_putstr(*args);
