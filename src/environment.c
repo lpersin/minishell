@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 15:53:05 by lpersin           #+#    #+#             */
-/*   Updated: 2019/09/11 19:39:07 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/09/14 10:36:55 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	*get_env_var_val(char *var, char **env_p)
 
 	env_p_entry = get_env_var_ptr(var, env_p);
 	if (env_p_entry == NULL)
-		return NULL;
+		return (NULL);
 	val = ft_strdup(ft_strchr(*env_p_entry, '=') + 1);
 	return (val);
 }

@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 16:45:16 by lpersin           #+#    #+#             */
-/*   Updated: 2019/09/11 19:43:51 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/09/14 12:15:12 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,11 @@ int ft_echo(t_cmd *cmd)
 
     args = cmd->args;
     i = 0;
-    while (i++ < cmd->var_num)
+    while (*args)
     {
-        if (*args)
-        {
-            ft_putstr(*args);
-            if (i < cmd->var_num)
-                ft_putchar(' ');
-        }
+        ft_putstr(*args);
+        if (i < cmd->var_num)
+            ft_putchar(' ');
         args++;
     }
     ft_putchar('\n');

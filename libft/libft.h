@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 15:31:06 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/27 19:15:54 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/09/14 10:45:26 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ char    			**ft_str_array_add(char **arr, char *str);
 char				**ft_str_array_del(char **arr, char *target);
 void    			ft_str_array_free(char **arr);
 int					ft_str_array_contains(char **arr, char *str);
+int					ft_exit_f(char *str);
 
 #	endif

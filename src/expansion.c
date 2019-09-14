@@ -6,11 +6,31 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 18:55:01 by lpersin           #+#    #+#             */
-/*   Updated: 2019/09/11 19:42:57 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/09/14 12:32:10 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+
+static void sanitize_args(t_cmd *cmd)
+{
+	int i = 0;
+
+	while (cmd->args[i])
+    {
+		if (cmd->args[i][0] == '$' && cmd->args[i][1] != '\0')
+		{
+			if (get_env_var_ptr(cmd->args[i] + 1, *cmd->env_p) == NULL)
+			{
+				cmd->args = ft_str_array_del(cmd->args, cmd->args[i]);
+				cmd->var_num--;
+				i = -1;
+			}
+		}
+		i++;
+    }
+}
 
 static void	expand_dollar(char **args, char **env_p)
 {
@@ -53,6 +73,7 @@ int 		expand_variables(t_cmd *cmd)
 
     if (cmd != NULL)
     {
+		sanitize_args(cmd);
         args = cmd->args;
         while (*args)
         {

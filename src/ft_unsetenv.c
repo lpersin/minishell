@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 17:35:00 by lpersin           #+#    #+#             */
-/*   Updated: 2019/08/28 17:36:34 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/09/14 12:16:44 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,16 @@ int		ft_unsetenv(t_cmd *cmd)
 
 	args = cmd->args;
 	i = 0;
-	if (cmd->var_num == 0)
+	if (*args == NULL)
 	{
 		ft_putstr("unsetenv: Too few arguments.\n");
 		return (EXIT_FAILURE);
 	}
 	else
 	{
-		while (i++ < cmd->var_num)
+		while (*args)
 		{
-			if(*args)
-				del_var_env(*args, cmd->env_p);
+			del_var_env(*args, cmd->env_p);
 			args++;
 		}
 		return (EXIT_SUCCESS);
