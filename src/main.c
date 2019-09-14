@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:42:54 by lpersin           #+#    #+#             */
-/*   Updated: 2019/09/14 12:29:15 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/09/14 13:25:40 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static t_cmd    *get_t_cmd(char ***env_p)
     cmd_line = NULL;
     cmd = NULL;
     get_next_line(STDIN_FILENO, &cmd_line);
-    parse_command(cmd_line, &cmd, env_p);
+    parse_command(cmd_line, &cmd, *env_p);
     if (cmd != NULL)
         cmd->env_p = env_p;
     ft_memdel((void**)&cmd_line);
@@ -58,7 +58,7 @@ int main()
     {
         print_prompt();
         cmd = get_t_cmd(&env_p);
-        if (expand_variables(cmd) != EXIT_FAILURE)
+        if (cmd && cmd->cmd && expand_variables(cmd) != EXIT_FAILURE)
         {
             if (is_builtin_cmd(cmd))
                 exec_builtin_cmd(cmd);

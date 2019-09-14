@@ -6,7 +6,7 @@
 /*   By: lpersin <lpersin@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/01 15:43:11 by lpersin           #+#    #+#             */
-/*   Updated: 2019/09/14 12:32:21 by lpersin          ###   ########.fr       */
+/*   Updated: 2019/09/14 13:14:36 by lpersin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct  s_fct_table_entry
 
 void    exec_builtin_cmd(t_cmd *cmd);
 void	exec_external_cmd(t_cmd *cmd);
-void    parse_command(char *cmd_line, t_cmd **cmd);
+void    parse_command(char *cmd_line, t_cmd **cmd, char **env_p);
 int     expand_variables(t_cmd *cmd);
 void    free_t_cmd(t_cmd *cmd);
 int     ft_echo(t_cmd *cmd);
